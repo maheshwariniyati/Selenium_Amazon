@@ -1,0 +1,63 @@
+package pageObjects;
+
+import java.net.MalformedURLException;
+import java.sql.Driver;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import main.openBrowser;
+
+public class HomePage extends openBrowser{
+
+	
+	
+	
+	
+	
+	public static void main(String[] args) throws MalformedURLException, InterruptedException {
+		
+		
+		openBrowser op = new openBrowser();
+		WebDriver driver=op.open("chrome");
+		Thread.sleep(5000);
+		textfield(driver);
+		Thread.sleep(5000);
+
+		clickBook(driver);
+	}
+	
+	// enter in the search box 
+	static void textfield(WebDriver driver) throws InterruptedException {
+		driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']")).sendKeys("Ender's Game by Orson Scott Card");
+		Thread.sleep(5000);
+
+		driver.findElement(By.cssSelector("#nav-search > form > div.nav-right > div > input")).click();
+	}
+	
+	
+	
+	static void clickBook(WebDriver driver) {
+		driver.findElement(By.cssSelector("#result_0 > div > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.a-spacing-small > div:nth-child(1) > a > h2")).click();
+	}
+	
+	
+	
+	
+	
+	/*@Test
+	void click() throws InterruptedException {
+		WebDriver driver=open("chrome");
+
+	// explicit wait 10 sec 
+		Thread.sleep(10000);
+		
+		
+		driver.getTitle();// contaoins("Amazon") 
+	
+	}*/
+	
+	
+	
+}

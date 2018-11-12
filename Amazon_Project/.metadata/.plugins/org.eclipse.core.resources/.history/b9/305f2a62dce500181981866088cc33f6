@@ -1,0 +1,100 @@
+package main;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public  class openBrowser {
+	WebDriver driver = null;
+
+	
+	public WebDriver open(String browser) throws MalformedURLException {
+		WebDriver driver = null;
+	     Wait<WebDriver> wait;
+
+		//
+		if(browser.equals("chrome")) {
+			
+			
+			
+			/*System.setProperty("webdriver.gecko.driver","D:\\Project X\\geckodriver");
+			// driver = new FirefoxDriver();	
+		 driver=new FirefoxDriver();
+		//path
+		driver.get("http://www.google.com");*/
+		
+			
+			
+			
+			
+	        final String url = "https://www.amazon.com/`";
+
+			System.setProperty("webdriver.gecko.driver","D:\\Project X\\geckodriver.exe");
+			
+			
+			 driver = new FirefoxDriver();
+	         driver.navigate().to(url);
+
+	          driver.manage().window().maximize();			
+	          String str = driver.getTitle();
+	          
+	          if(str.contains("Amazon.com")) {
+	        	  System.out.println("Pass: The title has been confirmed ");
+	              Logger log = Logger.getLogger("Clicked on Amazon");
+	              PropertyConfigurator.configure("Log4j.properties");
+	                      logger.info("Implicit wait given");
+
+
+	          }
+	          
+	          
+			System.out.println(str);
+			/*DesiredCapabilities cap = DesiredCapabilities.chrome();
+	        cap.setCapability("marionette", true);
+	        cap.setBrowserName("chrome");
+	        driver = new RemoteWebDriver(new URL("http://192.168.117.135:5555/wd/hub"), cap);//true to enable the JS
+	        wait = new WebDriverWait(driver, 3000);
+	        final String url = "https://www.google.com/";
+
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	        try {
+	            driver.navigate().to(url);
+	        } finally {
+	            driver.close();
+	        }
+		
+		*/
+		
+		}
+		
+		
+		
+		
+		
+		
+		//else{if
+		return driver;
+		
+		/**
+		 * here you will define the functions to open various browsers 
+		 */
+		// give logger here 
+	}
+	
+	
+	/*public static void main(String[] args) {
+		
+	}*/
+	
+}
